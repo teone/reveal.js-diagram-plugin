@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <h2>Diagram plugin for reveal.js</h2>
+                <section class="fig-container"
+                        data-fig-id="fig-diagram"
+                        data-file="diagram.html">
+                </section>
+
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: false,
+                progress: true,
+                history: true,
+                center: true,
+
+                // transition options: none/fade/slide/convex/concave/zoom
+                transition: 'fade',
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'https://d3js.org/d3.v4.min.js' },
+                    { src: 'reveal.js/plugin/d3js/d3js.js' }
+                ]
+            });
+
+        </script>
+    </body>
+</html>

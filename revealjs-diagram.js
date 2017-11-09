@@ -15,33 +15,17 @@
 
   $('document').ready(function() {
 
-    var slide = window.parent.Reveal.getIndices();
-    var currentDiagram = _.find(registered, {xpos: slide.h, vpos: slide.v});
-
-    // start the tree
-    if (currentDiagram && !currentDiagram.initialized) {
-      console.info('Starting diagram: ' + currentDiagram.name);
-      currentDiagram.cb();
-      currentDiagram.initialized = true;
-    }
-
-    window.parent.Reveal.addEventListener( 'slidechanged', function( event ) {
-      currentDiagram = _.find(registered, {xpos: event.indexh, vpos: event.indexv});
-      if (currentDiagram && !currentDiagram.initialized) {
-        console.info('Starting diagram: ' + currentDiagram.name);
-        currentDiagram.cb();
-        currentDiagram.initialized = true;
-      }
+    Object.keys(registered).forEach(function (k) {
+      registered[k].cb();
     });
+
   });
 
   var registered = {};
-  function register(name, pos, cb) {
+  function register(name, cb) {
     console.log('register', name)
     registered[name] = {
       name: name,
-      xpos: pos.h,
-      vpos: pos.v,
       cb: cb
     }
   }
@@ -70,7 +54,7 @@
 
   // Private methods
   function findNode(name, nodes) {
-    const node = nodes.shift();
+    var node = nodes.shift();
     if (node.name === name) {
       return node;
     }
@@ -172,7 +156,7 @@
       throw Error('You need to specify a parent to add a node in the Tree!')
     }
     return function() {
-      const parentNode = findNode(parent, [root]);
+      var parentNode = findNode(parent, [root]);
       if (!parentNode.children) {
         parentNode.children = []
       }
@@ -185,8 +169,14 @@
 
   function removeItem(name, root) {
     return function() {
-      const node = findNode(name, [root]);
-      _.remove(node.parent.children, {name: name});
+      var node = findNode(name, [root]);
+      var siblings = node.parent.children;
+
+      var idx = siblings.findIndex(function(i) {
+        return i.name === name;
+      });
+
+      siblings.splice(idx, 1);
       update(root);
     }
   }
