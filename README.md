@@ -63,8 +63,13 @@ In the file `diagram.html`:
 ## APIs
 
 `window.diagram.addItem(newNode, parentNode, treeData)`: Add a `newNode` to an existing `parentNode`
+
 `window.diagram.removeItem(node, treeData)`: Remove a `node` element
+
 `window.diagram.addLink(sourceNode, targetNode, treeData)`: Add a link between two existing nodes
+
 `window.diagram.removeLink(sourceNode, targetNode, treeData)`: Remove a link between two existing nodes
+
 `window.diagram.register(name, callback)`: Register a diagram, tipically the callback will invoke `window.diagram.init`
+
 `window.diagram.init(treeData)`: Initialize the rendering of a diagram 
