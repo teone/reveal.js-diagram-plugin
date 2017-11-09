@@ -1,17 +1,41 @@
 <html>
     <head>
         <link rel="stylesheet" href="reveal.js/css/reveal.css">
-        <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/black.css">
+
+        <style>
+            section {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
     </head>
     <body>
         <div class="reveal">
             <div class="slides">
-                <h2>Diagram plugin for reveal.js</h2>
                 <section class="fig-container"
-                        data-fig-id="fig-diagram"
-                        data-file="diagram.html">
-                </section>
+                         data-fig-id="fig-intro"
+                         data-file="intro.html">
+                    <h2>Diagram plugin for reveal.js</h2>
+                    <p>Press right arrow to trigger transitions and left arrow to invert transition.</p>
 
+                    <p style="position: absolute; bottom: 0;">This plugin is based on: <a href="https://github.com/jlegewie/reveal.js-d3js-plugin">https://github.com/jlegewie/reveal.js-d3js-plugin</a></p>
+                </section>
+                <section class="fig-container"
+                        data-fig-id="fig-diagram1"
+                        data-file="diagram1.html">
+                    <h2>Basic diagram</h2>
+                </section>
+                <section class="fig-container"
+                         data-fig-id="fig-diagram2"
+                         data-file="diagram2.html">
+                    <h2>Closed diagram</h2>
+                </section>
+                <section class="fig-container"
+                         data-fig-id="fig-diagram3"
+                         data-file="diagram3.html">
+                    <h2>Combined steps</h2>
+                </section>
             </div>
         </div>
 

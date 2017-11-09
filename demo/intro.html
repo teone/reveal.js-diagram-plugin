@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <style>
+
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>
+  <link rel="stylesheet" href="../revealjs-diagram.css">
+</head>
+<body>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../revealjs-diagram.js"></script>
+  <script>
+
+    var treeData = {
+      name: 'A',
+      x0: window.diagram.height / 2,
+      y0: 0,
+      children: []
+    };
+
+    var _transitions = [
+      window.diagram.addItem('B', 'A', treeData),
+    ];
+
+    var _inverse_transitions = [
+      window.diagram.removeItem('B', treeData),
+    ];
+
+    // start the tree
+    window.diagram.register('intro', function() {
+      window.diagram.init(treeData);
+    });
+  </script>
+</body>

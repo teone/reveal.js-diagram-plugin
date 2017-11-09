@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <style>
+
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>
+  <link rel="stylesheet" href="../revealjs-diagram.css">
+</head>
+<body>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../revealjs-diagram.js"></script>
+  <script>
+
+    var treeData = {
+      name: 'root',
+      x0: window.diagram.height / 2,
+      y0: 0,
+      children: []
+    };
+
+    // define a function to add multiple nodes
+    function addChildren() {
+      window.diagram.addItem('child 1', 'root', treeData)();
+      window.diagram.addItem('child 2', 'root', treeData)();
+      window.diagram.addItem('child 3', 'root', treeData)();
+    };
+
+    function removeChildren() {
+      window.diagram.removeItem('child 1', treeData)();
+      window.diagram.removeItem('child 2', treeData)();
+      window.diagram.removeItem('child 3', treeData)();
+    }
+
+    // define a function to add multiple links
+    function addLinks() {
+      window.diagram.addLink('child 1', 'tail', treeData)();
+      window.diagram.addLink('child 3', 'tail', treeData)();
+    }
+
+    function removeLinks() {
+      window.diagram.removeLink('child 1', 'tail', treeData)();
+      window.diagram.removeLink('child 3', 'tail', treeData)();
+    }
+
+    var _transitions = [
+      addChildren,
+      window.diagram.addItem('tail', 'child 2', treeData),
+      addLinks
+    ];
+
+    var _inverse_transitions = [
+      removeChildren,
+      window.diagram.removeItem('tail', treeData),
+      removeLinks
+    ];
+
+    // start the tree
+    window.diagram.register('combined', function() {
+      window.diagram.init(treeData);
+    });
+  </script>
+</body>

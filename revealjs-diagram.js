@@ -269,7 +269,10 @@
         key: key
       }
 
-      var existing = _.findIndex(_randomLinks, {key: key});
+      var existing = _randomLinks.findIndex(function(i) {
+        return i.key === key;
+      });
+      // var existing = _.findIndex(_randomLinks, {key: key});
       if (existing === -1) {
         _randomLinks.push(link);
         update(tree);
@@ -281,9 +284,11 @@
   function removeLink(source, target, tree) {
     return function() {
       var key = source + '~' + target;
-      var existing = _.findIndex(_randomLinks, {key: key});
+      var existing = _randomLinks.findIndex(function(i) {
+        return i.key === key;
+      });
       if (existing > -1) {
-        _.remove(_randomLinks, {key: key});
+        _randomLinks.splice(existing, 1);
         update(tree);
       }
     }
