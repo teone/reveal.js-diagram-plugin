@@ -236,7 +236,7 @@
 
   function renderStandaloneLinks(links) {
     var link = svg.selectAll("path.link-alone")
-      .data(links, function(d) { return `standalone~${d.key}`; });
+      .data(links, function(d) { return 'standalone' + d.key });
 
 
     // Enter any new links at the parent's previous position.
@@ -293,7 +293,7 @@
       var key = source + '~' + target;
       var existing = _.findIndex(_randomLinks, {key: key});
       if (existing > -1) {
-        _.remove(_randomLinks, {key: key})
+        _.remove(_randomLinks, {key: key});
         update(tree);
       }
     }
